@@ -1,0 +1,212 @@
+'''
+## bài tập 1
+print(" So luong mon hoc laf 4")
+mon = "  co so lap trinh; dai so tuyen tinh; lich su Dang; triet"
+arr  = mon.split(';')
+for x  in arr:
+    print(x)
+'''
+'''
+### bài tập 2
+danhsach = ['Kiet', 'Hai' , 'Toan' , 'Thoang']
+danhsach.append("Duong")
+print(danhsach)
+danhsach.pop(1)
+print(danhsach)
+'''
+'''
+###  bài tập 3
+bangmau = ["đỏ", "cam", "vàng","xanh", "tím"]
+try:
+    print("Danh sách ban đầu:", bangmau)
+    bangmau.remove("xanh")
+    print("Sau khi xóa:", bangmau)
+except ValueError:
+    print("Không tìm thấy 'xanh' trong danh sách, hãy thử lại")
+'''
+'''
+### bài tập 4
+so = [1,4,6,8,5,3]
+so.sort()
+print(so)
+so.reverse()
+print(so)
+print(so.count(5))
+'''
+'''
+### bài tập 5
+def thuat_toan_chen_giam_dan(arr):
+   for i in range(1, len(arr)):
+       key = arr[i]
+       j = i - 1
+       while j >= 0 and arr[j] < key:
+           arr[j + 1] = arr[j]
+           j -= 1
+           arr[j + 1] = key
+   return arr
+numbers = input("Nhập danh sách số thực, cách nhau bởi dấu cách: ")
+arr = [float(x) for x in numbers.split()]
+print("Kết quả:", thuat_toan_chen_giam_dan(arr))
+'''
+'''
+###  bài tập 6
+def bubble_sort(arr):
+    n = len(arr)
+    swap_count = 0
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swap_count += 1
+    return arr, swap_count
+numbers = input("Nhập danh sách số nguyên: ")
+arr = [int(x) for x in numbers.split()]
+sorted_arr, swaps = bubble_sort(arr)
+print("Danh sách sau khi sắp xếp tăng dần:", sorted_arr)
+print("Số lần hoán đổi:", swaps)
+'''
+'''
+### bài tập 7
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i 
+    return -1 
+numbers = input("Nhập danh sách số: ")
+arr = [int(x) for x in numbers.split()]
+target = int(input("Nhập số cần tìm: "))
+index = linear_search(arr, target)
+if index != -1:
+    print(f"Số {target} được tìm thấy tại chỉ số {index}.")
+else:
+    print(f"Số {target} không có trong danh sách.")
+'''
+'''
+### bài tập 8
+def tim_so_lon_hon_10(arr):
+    for i in range(len(arr)):
+        if arr[i] > 10:
+            return arr[i], i
+    return None, -1 
+numbers = input("Nhâpj danh sách số: ")
+arr = [int(x) for x in numbers.split()]
+value, index = tim_so_lon_hon_10(arr)
+if index != -1:
+    print(f"Số đầu tiên lớn hơn 10 là {value}, tại chỉ số {index}.")
+else:
+    print("Không có số nào lớn hơn 10 trong danh sách.")
+'''
+'''
+### bài tập 9
+def find_odds(arr):
+    odds = []
+    for num in arr:
+        if num % 2 != 0:   
+            odds.append(num)
+    return odds
+numbers = input("Nhập danh sách số nguyên, cách nhau bởi dấu cách: ")
+arr = [int(x) for x in numbers.split()]
+odd_numbers = find_odds(arr)
+if odd_numbers:
+    print("Các số lẻ trong danh sách là:", odd_numbers)
+else:
+    print("Không có số lẻ nào trong danh sách.")
+'''
+'''
+### bài tập 10
+def find_even_numbers(arr):
+    evens = []
+    total = 0
+    for num in arr:
+        if num % 2 == 0:  
+            evens.append(num)
+            total += num
+    return evens, total
+numbers = input("Nhập danh sách số nguyên, cách nhau bởi dấu cách: ")
+arr = [int(x) for x in numbers.split()]
+even_numbers, total_sum = find_even_numbers(arr)
+if even_numbers:
+    print("Các số chẵn trong danh sách là:", even_numbers)
+    print("Tổng các số chẵn là:", total_sum)
+else:
+    print("Không có số chẵn nào trong danh sách.")
+'''
+'''
+### bài 11
+def find_min_max(arr):
+    min_val = arr[0]
+    max_val = arr[0]
+    for num in arr:
+        if num < min_val:
+            min_val = num
+        if num > max_val:
+            max_val = num
+    return min_val, max_val
+numbers = input("Nhập danh sách số: ")
+arr = [int(x) for x in numbers.split()]
+min_val, max_val = find_min_max(arr)
+print("Giá trị nhỏ nhất trong mảng là:", min_val)
+print("Giá trị lớn nhất trong mảng là:", max_val)
+'''
+'''
+### bài 12
+def add_matrices(matrix1, matrix2):
+    m = len(matrix1)
+    n = len(matrix1[0])
+    result = [[0] * n for _ in range(m)]
+    for i in range(m):
+        for j in range(n):
+            result[i][j] = matrix1[i][j] + matrix2[i][j]
+    return result
+m = int(input("Nhập số hàng m: "))
+n = int(input("Nhập số cột n: "))
+print("Nhập ma trận thứ nhất:")
+matrix1 = []
+for i in range(m):
+    row = [int(x) for x in input(f"Hàng {i + 1}: ").split()]
+    matrix1.append(row)
+print("Nhập ma trận thứ hai:")
+matrix2 = []
+for i in range(m):
+    row = [int(x) for x in input(f"Hàng {i + 1}: ").split()]
+    matrix2.append(row)
+result = add_matrices(matrix1, matrix2)
+print("Kết quả cộng hai ma trận là:")
+for row in result:
+    print(row)
+'''
+'''
+### bài 13
+text = input("Nhập một chuỗi: ")
+if text == text[::-1]:
+    print("Chuỗi này là Palindrome.")
+else:
+    print("Chuỗi này không phải là Palindrome.")
+'''
+'''
+### bài 14
+def count_vowels(s):
+    vowels = "aeiouAEIOU" 
+    count = 0
+    for char in s:
+        if char in vowels:
+            count += 1
+    return count
+text = input("Nhập một chuỗi: ")
+print("Số lượng nguyên âm là:", count_vowels(text))
+'''
+### bài 15
+### sử dụng slicing
+'''
+text = input("Nhập một chuỗi: ")
+reversed_text = text[::-1]  
+print("Chuỗi đảo ngược :", reversed_text)
+'''
+'''
+### khôgn sử dụng slicing
+text = input("Nhập một chuỗi: ")
+reversed_text = ""
+for char in text:
+    reversed_text = char + reversed_text
+print("Chuỗi đảo ngược :", reversed_text)
+'''
