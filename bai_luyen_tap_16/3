@@ -1,0 +1,157 @@
+'''
+#BÀi 1: Tính BMI chỉ số của cơ thể
+can_nang = float(input("Nhập vào cân nặng của bạn (kg) : "))
+chieu_cao = float(input("Nhập vào chiều cao của bạn (m) : "))
+if can_nang <=0:
+    print("Nhập lại cân nặng của bạn !!!")
+if chieu_cao <=0:
+    print("Nhập lại chiều cao của bạn !!!")
+BMI = can_nang/(chieu_cao*chieu_cao)
+print(f"Chỉ số BMI của bạn là: {BMI:.2f}")
+'''
+'''
+# BÀi 2: NHập vào một số và tính tổng các số đó
+n = int(input("Nhập vào một số nguyên bất kì : "))
+tong = 0
+for index in range(len(str(n))):
+    tong += int(str(n)[index])
+print(f"Tổng các chữ số là {tong}")
+'''
+'''
+#BÀi 3:
+ten = input("Nhập tên của bạn: ")
+ten = ten.strip()
+ten = ten.split()
+ten = ' '.join(word.capitalize() for word in ten)
+print("Tên của bạn sau khi chỉnh sửa là : ", ten)
+'''
+#Bài 4:
+'''
+s = input('Nhap vao mot chuoi cac ki tu: ')
+hoa = 0
+thuong = 0
+so = 0
+dac_biet = 0
+khoang_trang = 0
+nguen_am = 0
+phu_am = 0
+for c in s:
+    if c.isupper():
+        hoa += 1
+    if c.islower():
+        thuong += 1
+    if c.isdigit():
+        so += 1
+    if c.isspace():
+        khoang_trang += 1
+    if c.lower() in 'aeiou':
+        nguen_am +=1
+    elif c.isalpha():
+        phu_am += 1
+    if not c.isalnum() and not c.isspace():
+        dac_biet += 1
+print('Chu hoa la: ', hoa)
+print('Chu thuong la: ', thuong)
+print('So la: ', so)
+print('Ki tu dac biet la: ', dac_biet)
+print('Ki tu khoang trang la: ', khoang_trang)
+print('Nguyen am la: ', nguen_am)
+print('Phu am la: ', phu_am)
+'''
+'''
+# Bai 5
+class User:
+    def __init__(self, user_id):
+        self._id = user_id
+    @property
+    def id(self):
+        return self._id
+u = User(123)
+print(u.id)
+u.id = 456
+'''
+'''
+# Bai 6
+class Product:
+    def __init__(self, price):
+        self._price = price
+    @property
+    def price(self):
+        return self._price
+    @price.setter
+    def price(self, value):
+        if value > 0:
+            self._price = value
+        else:
+            raise ValueError("Giá phải lớn hơn 0")
+
+    def __str__(self):
+        return f"Product price: {self._price}"
+p = Product(100)
+print(p)
+p.price = 200
+print(p)
+'''
+# Bai 8
+'''
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+    def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+v1 = Vector(2, 3)
+v2 = Vector(4, 5)
+v3 = v1 + v2
+print(v3)
+'''
+# BAi 7
+'''
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    @classmethod
+    def from_string(cls, data_str):
+        name, age = data_str.split('-')
+        return cls(name, int(age))
+    def __str__(self):
+        return f"Person(name={self.name}, age={self.age})"
+
+p = Person.from_string("Thoang-19")
+print(p)
+'''
+'''
+#Bai 9
+class SinhVien:
+    def __init__(self, diem):
+        self.diem = diem
+    def __eq__(self, other):
+        if isinstance(other, SinhVien):
+            return self.diem == other.diem
+        return False
+sv1 = SinhVien(8)
+sv2 = SinhVien(8)
+sv3 = SinhVien(9)
+print(f"sv1 == sv2: {sv1 == sv2}")
+print(f"sv1 == sv3: {sv1 == sv3}")
+'''
+'''
+# BAi 10:
+class SinhVien:
+    count = 0
+    def __init__(self, diem):
+        self.diem = diem
+        SinhVien.count += 1
+    @classmethod
+    def get_count(cls):
+        return cls.count
+sv1 = SinhVien(8)
+sv2 = SinhVien(9)
+sv3 = SinhVien(10)
+print(f"Số lượng sinh viên đã tạo: {SinhVien.get_count()}")
+'''
+# bai 11
