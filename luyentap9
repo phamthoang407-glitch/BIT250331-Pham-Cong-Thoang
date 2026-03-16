@@ -155,3 +155,22 @@ sv3 = SinhVien(10)
 print(f"Số lượng sinh viên đã tạo: {SinhVien.get_count()}")
 '''
 # bai 11
+# bai 11
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        return "GAu gau"
+class Professor(Dog):
+    def __init__(self, name, subject):
+        super().__init__(name)
+        self.subject = subject
+
+    def speak(self):
+        return f"{self.name} sua {self.subject}."
+
+
+snape = Professor("Dog", "Gaau")
+print(snape.name)
+print(snape.subject)
+print(snape.speak())
