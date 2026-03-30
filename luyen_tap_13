@@ -1,0 +1,54 @@
+# bài 1
+'''
+n = int(input("Nhập vào môt số "))
+if n >= 0:
+    can_bac_2 = n**(1/2)
+    print(f"can bac hai = {can_bac_2}")
+else:
+    print("Lỗi")
+    '''
+'''
+#Bài2
+chuoi = input("Nhập vào một chuỗi ")
+print(len(chuoi))
+m = chuoi.count('a')
+print(m)
+'''
+'''
+# bài 3:
+tong = 0
+for i in range(2, 21, 2):
+    tong += i
+    print(i)
+print(f"Tổng các số chẵn từ 1 đến 20 là: {tong}")
+'''
+'''
+# bài 4:
+def giai_thua(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * giai_thua(n - 1)
+so = int(input("Nhập một số: "))
+print(f"Giai thừa của {so} là {giai_thua(so)}")
+'''
+'''
+# bài 5:
+class Flower:
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
+        return f"Flower(name={self.name}, color={self.color})"
+hoa = Flower("Hồng", "đỏ")
+print(hoa)
+'''
+# bài 6:
+def bubble_sort(arr):
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+ds = [1,3,6,2,4,8,9]
+bubble_sort(ds)
+print("Dãy sau khi sắp xếp:", ds)
+
