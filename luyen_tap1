@@ -1,0 +1,140 @@
+# BÀI 1
+'''
+so_nguyen = 10
+so_thuc = 3.14
+chuoi = "Xin chào!"
+print("Số nguyên:", so_nguyen)
+print("Số thực:", so_thuc)
+print("Chuỗi:", chuoi)
+'''
+'''
+# BÀI 2
+r = 5
+pi = 3.14
+chu_vi = 2 * pi * r
+print(chu_vi)
+'''
+# bài 3
+'''
+a = input("Nhap vao a ")
+b = input("Nhap vào b ")
+tong = a+b
+tich = a*b
+if a>b:
+    hieu = a-b
+else:
+    hieu = b-a
+print(f"{tong}, {tich},{hieu}")
+'''
+'''
+# bài 4
+a = int(input("Nhap vao a "))
+b = int(input("Nhap vào b "))
+tong = 0
+def sum_two_numbers(a, b):
+    return a+b
+print(sum_two_numbers(a, b))
+'''
+'''
+# bài 5
+name = "Nguyen Van A"
+age = 20
+average_score = 8.5
+print("Kiểu dữ liệu của name:", type(name))
+print("Kiểu dữ liệu của age:", type(age))
+print("Kiểu dữ liệu của average_score:", type(average_score))
+age_next_year = age + 1
+doubled_score = average_score * 2
+print("Tên:", name)
+print("Tuổi hiện tại:", age)
+print("Tuổi năm sau:", age_next_year)
+print("Điểm trung bình:", average_score)
+print("Điểm nhân đôi:", doubled_score)
+print("Kiểu dữ liệu của age_next_year:", type(age_next_year))
+print("Kiểu dữ liệu của doubled_score:", type(doubled_score))
+'''
+# bài 6
+'''
+def is_even(n):
+    return n%2==0
+print(is_even(5))
+'''
+'''
+# bài 7
+a = input("Nhập vào số thứ nhất = ")
+b = input("Nhập vào số thứ hai = ")
+c = input("Nhập vào số thứ ba = ")
+max = a
+if b>max:
+    max = b
+if c>max:
+    max = c
+print(max)
+'''
+# bài 8
+'''
+def greet(name):
+    return f"Hello, {name}!"
+name = str(input("Nhập vào tên học sinh : "))
+print(greet(name))
+'''''
+# bài 9
+'''
+a = int(input("Nhập vào tuổi của bạn : "))
+if a not in range(0,121):
+    print("Tuổi không hợp lệ")
+else:
+    print("Hợp lệ !")
+    '''
+
+# bài 10
+'''
+chuoi = str(input("Nhập vào một chuỗi : "))
+dem = 0
+char = 'a'
+if char in chuoi:
+    dem +=1
+print(dem)
+'''
+# bài 11
+'''
+c = float(input("Nhập vào độ C: "))
+F = c*(9/5)+32
+print(f"Đôn F= {F}")
+'''
+# bài 12
+'''
+m = float(input("Nhập vào cân nặng của bạn(kg) : "))
+l = float(input("Nhập vào chiều cao của bạn(m) : "))
+BMI = m/(l*l)
+BMI_N = round(BMI,2)
+print(f"Chỉ số BMI của bạn là {BMI_N}")
+'''
+# bài 13
+'''
+try:
+    a = int(input("Nhập số nguyên thứ nhất: "))
+    b = int(input("Nhập số nguyên thứ hai: "))
+    result = a / b
+    print("Kết quả phép chia là:", result)
+except ValueError:
+    print("Lỗi: Vui lòng nhập số nguyên hợp lệ.")
+except ZeroDivisionError:
+    print("Lỗi: Không thể chia cho 0.")
+    '''
+# bài 14
+'''
+import math
+n = int(input("Nhập vào một số :"))
+can_bac2 = math.sqrt(n)
+print(can_bac2)
+'''
+# bài 15
+ten = str(input("NHập vào tên sinh viên :"))
+toan = float(input("Nhập vào điểm môn toán :"))
+ly = float(input("Nhập vào điểm môn lý :"))
+hoa = float(input("Nhập vào điểm môn hóa :"))
+diem_tb = (toan+ly+hoa)/3
+print(f'{ten} có điểm trung bình là {diem_tb}')
+
+
