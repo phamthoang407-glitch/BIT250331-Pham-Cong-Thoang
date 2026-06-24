@@ -1,0 +1,660 @@
+// Bài 1: Animal → Dog (Single Inheritance cơ bản)
+//Mục tiêu: Hiểu cú pháp kế thừa đơn, public inheritance, truy cập thành viên.
+//Yêu cầu:
+//• Tạo class Animal với thuộc tính protected: name (string), age (int).
+//• Viết phương thức eat() in ra "[name] is eating...".
+//• Tạo class Dog kế thừa public từ Animal.
+//• Thêm thuộc tính private breed (string) cho Dog.
+//• Viết phương thức bark() và display() in đầy đủ thông tin.
+//• Trong main(), tạo đối tượng Dog, gọi eat() và bark().
+// Câu hỏi: Nếu đổi name sang private trong Animal, lớp Dog có truy cập được không? Tại sao
+/*
+#include <iostream>
+#include <string>
+using namespace std;
+class Animal {
+protected:
+    string name;
+    int age;
+public:
+    void eat() {
+        cout<< name << " is eating xuc xich "<< endl;
+    }
+    void setName(string n) {
+        name = n;
+    }
+    void setAge(int a) {
+        age = a;
+    }
+
+};
+class Dog : public Animal {
+private:
+    string breed;
+public:
+void setBreed(string b) {
+        breed = b;
+    }
+    void bark() {
+        cout<< name << " is barking gaau gaauu "<< endl;   
+}
+    void display() {
+        cout<< "Name: " << name << endl;
+        cout<< "Age: " << age << endl;
+        cout<< "Breed: " << breed << endl;
+    }
+
+};
+int main() {
+    Dog myDog;
+    myDog.setName("Buddy");
+    myDog.setAge(3);
+    myDog.setBreed("Golden Retriever");
+    myDog.eat();
+    myDog.bark();
+    myDog.display();    
+  
+}
+    */
+//Bài 2: Vehicle → Car (Constructor Chaining)
+//Mục tiêu: Hiểu cách constructor lớp cha được gọi qua Member Initializer List.
+//Yêu cầu:
+//• Tạo class Vehicle: brand (string), year (int). Constructor in ra "Vehicle ctor".
+//• Tạo class Car kế thừa từ Vehicle: thêm numDoors (int). Constructor in ra "Car ctor".
+//• Car constructor phải gọi Vehicle constructor qua initializer list.
+//• Viết destructor cho cả hai class, mỗi destructor in thông báo.
+//• Trong main(), tạo Car và quan sát thứ tự gọi constructor/destructor.
+// Câu hỏi: Constructor gọi theo thứ tự nào? Destructor thì sao? Tại sao
+/*
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Vehicle {
+    protected :
+        string brand;
+        int year ;
+    public:
+        Vehicle(string b, int y) {
+            b = brand;
+            y = year;
+            cout<< "vehicle ctor"<< endl;
+        }
+        ~Vehicle() {
+            cout<< "Vehicle dtor"<< endl;
+        }
+
+};
+class Car : public Vehicle {
+    private:
+        int numdoor;
+    public:
+        Car(string b, int y, int d ) : Vehicle(b, y){
+        numdoor = d;
+        cout << "Car ctor" << endl;
+        }
+        ~Car(){
+            cout<< "Car dtor" << endl;
+        }
+
+};
+int main() {
+    Car c("vin", 20206, 8);
+    return 0;
+}
+    */
+//Bài 3: Access Specifiers trong kế thừa
+//Mục tiêu: So sánh public, protected, private inheritance.
+//Yêu cầu:
+//• Tạo class Base với 3 thuộc tính: pub (public), prot (protected), priv (private).
+//• Tạo 3 class kế thừa:– DerivedPublic : public Base– DerivedProtected : protected Base– DerivedPrivate : private Base
+//• Trong mỗi lớp dẫn xuất, viết phương thức test() thử truy cập cả 3 thuộc tính — ghi chú dòng
+//nào lỗi biên dịch.
+//• Trong main(), thử truy cập pub, prot từ bên ngoài qua mỗi lớp dẫn xuất — ghi chú kết quả.
+// Hoàn thành bảng: Với mỗi mode kế thừa, thành viên public/protected/private của Base trở thành
+//gì trong Derived
+/*
+#include<iostream>
+using namespace std;
+class Base{
+    private:
+        int priv = 1;
+    public:
+        int pub = 2;
+    protected:
+        int prot = 3;
+};
+class DerivedPublic : public Base{
+    public:
+    void test() {
+        cout<< "DerivedPublic test" << endl;
+        pub = 10;
+        prot = 2;
+        //priv =3; khong truy cap duoc
+
+    }
+
+};
+class DerivedProtected : protected Base{
+    public:
+    void test(){
+        cout<< "DerivedProtected test"<< endl;
+        pub = 1;
+        prot = 2;
+    }
+
+};
+class DerivedPrivate : private Base{
+    public:
+      void test(){
+        cout<< "DerivedPrivate test"<< endl;
+        pub = 1;
+        prot = 2;
+    }
+
+};
+int main (){
+    DerivedPrivate DPriv;
+    DerivedProtected DProt;
+    DerivedPublic DPub;
+    DPriv.test();
+    DProt.test();
+    DPub.test();
+
+} 
+    */
+//Bài 4: Shape → Circle, Rectangle (Override + Scope Resolution)
+//Mục tiêu: Override phương thức của lớp cha và gọi lại logic cha bằng Base::method().
+//Yêu cầu:
+//• Tạo class Shape với thuộc tính color (string) và phương thức:– describe() in ra "Shape: [color]".– area() trả về 0.0 (mặc định).
+//• Tạo Circle kế thừa Shape: thêm radius. Override area() trả về π×r². Override describe(): gọi
+//Shape::describe() rồi in thêm thông tin Circle.
+//• Tạo Rectangle kế thừa Shape: thêm width, height. Override tương tự.
+//• Trong main(), tạo mỗi loại 1 đối tượng, gọi describe() và in diện tích
+/*
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Shape{
+    protected:
+        string color;
+        int area = 0;
+    public: 
+     Shape(string c) : color(c){
+        }
+        void describe(){
+            cout<< "Shape:  "<< color << endl;
+        }
+
+      
+};
+class circle :public Shape {
+    private:
+        float radius;
+         float pi = 3.14f;
+    public:
+    circle(float r, string c):radius(r), Shape(c){}
+   
+    float Override_area(){
+        return pi *radius*radius;
+    }
+    void show(){
+        Shape :: describe();
+        cout <<" circle có diện tích : " << Override_area() << endl;
+    }
+};
+class Rectangle: public Shape{
+    private:
+    float width;
+    float height;
+    public:
+    Rectangle(float w, float h,string c): width(w), height(h),Shape(c){} 
+    float Override_area(){
+        return width * height;
+
+    }
+    void show2(){
+        cout<<"Rectangcle có diện tích: "<< Override_area()<< endl;
+    }
+};
+int main() {
+    Shape S("red");
+    S.describe();
+    circle C(3,"blue");
+    C.show();
+    Rectangle R(3 , 4," dẻ lau");
+    R.show2();
+    return 0;
+    
+};
+*/
+//Bài 5: BankAccount → SavingsAccount (Override withdraw)
+//Mục tiêu: Override phương thức với logic nghiệp vụ khác nhau.
+//Yêu cầu:
+//• Tạo class BankAccount:– protected double balance.– deposit(double) và withdraw(double) — withdraw chỉ cần kiểm tra đủ tiền.
+//• Tạo class SavingsAccount kế thừa BankAccount:– Thêm double minimumBalance (số dư tối thiểu).– Override withdraw(): chỉ cho rút nếu sau khi rút, số dư ≥ minimumBalance.
+//• Trong main(), thử rút tiền sát ngưỡng tối thiểu — quan sát từ chối.
+/*
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+protected:
+    double balance;
+
+public:
+    BankAccount(double b) : balance(b) {}
+
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Nap tien thanh cong: " << amount << endl;
+        } else {
+            cout << "So tien nap khong hop le!" << endl;
+        }
+    }
+
+    virtual void withdraw(double amount) {
+        if (amount <= 0) {
+            cout << "So tien rut khong hop le!" << endl;
+        } 
+        else if (amount > balance) {
+            cout << "So du khong du!" << endl;
+        } 
+        else {
+            balance -= amount;
+            cout << "Rut tien thanh cong: " << amount << endl;
+        }
+    }
+
+    void showBalance() {
+        cout << "So du hien tai: " << balance << endl;
+    }
+};
+
+class SavingsAccount : public BankAccount {
+private:
+    double minimumBalance;
+
+public:
+    SavingsAccount(double b, double m) : BankAccount(b), minimumBalance(m) {}
+
+    void withdraw(double amount) override {
+        if (amount <= 0) {
+            cout << "So tien rut khong hop le!" << endl;
+        } 
+        else if (balance - amount < minimumBalance) {
+            cout << "Khong the rut vi phai duy tri so du toi thieu la: " 
+                 << minimumBalance << endl;
+        } 
+        else {
+            balance -= amount;
+            cout << "Rut tien thanh cong tu tai khoan tiet kiem: " 
+                 << amount << endl;
+        }
+    }
+};
+
+int main() {
+    BankAccount acc1(1000);
+    acc1.showBalance();
+    acc1.deposit(500);
+    acc1.withdraw(300);
+    acc1.showBalance();
+
+
+
+    SavingsAccount acc2(1000, 200);
+    acc2.showBalance();
+    acc2.withdraw(700); 
+    acc2.showBalance();
+
+    acc2.withdraw(200);
+    acc2.showBalance();
+
+    return 0;
+}
+*/ 
+// bài 6
+/*
+#include <iostream>
+using namespace std;
+
+class Employee {
+protected:
+    string name;
+    double hoursWorked, hourlyRate;
+public:
+    Employee(string n, double h, double r)
+        : name(n), hoursWorked(h), hourlyRate(r) {}
+
+    virtual double calculatePay() {
+        return hoursWorked * hourlyRate;
+    }
+
+    virtual void display() {
+        cout << name << " - Salary: " << calculatePay() << endl;
+    }
+};
+
+class Manager : public Employee {
+    double bonus;
+public:
+    Manager(string n, double h, double r, double b)
+        : Employee(n, h, r), bonus(b) {}
+
+    double calculatePay() override {
+        return Employee::calculatePay() + bonus;
+    }
+};
+
+class Intern : public Employee {
+public:
+    Intern(string n, double h, double r)
+        : Employee(n, h, r) {}
+
+    double calculatePay() override {
+        return Employee::calculatePay() * 0.8;
+    }
+};
+
+int main() {
+    Employee e("Employee A", 40, 10);
+    Manager m("Manager B", 40, 15, 200);
+    Intern i("Intern C", 40, 8);
+
+    e.display();
+    m.display();
+    i.display();
+}
+*/
+// bài 7
+/*
+#include <iostream>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+    int age;
+public:
+    Person(string n, int a) : name(n), age(a) {}
+};
+
+class Employee : public Person {
+protected:
+    int employeeId;
+    double salary;
+public:
+    Employee(string n, int a, int id, double s)
+        : Person(n, a), employeeId(id), salary(s) {}
+};
+
+class Manager : public Employee {
+    string department;
+    int teamSize;
+public:
+    Manager(string n, int a, int id, double s, string d, int t)
+        : Employee(n, a, id, s), department(d), teamSize(t) {}
+
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "ID: " << employeeId << endl;
+        cout << "Salary: " << salary << endl;
+        cout << "Department: " << department << endl;
+        cout << "Team size: " << teamSize << endl;
+    }
+};
+
+int main() {
+    Manager m("John", 35, 101, 5000, "IT", 10);
+    m.display();
+}
+*/
+
+// bài 8
+/*
+#include <iostream>
+using namespace std;
+
+class Account {
+protected:
+    int accountNo;
+    double balance;
+public:
+    Account(int no, double b) : accountNo(no), balance(b) {}
+
+    void deposit(double amount) { balance += amount; }
+    void withdraw(double amount) { balance -= amount; }
+
+    double getBalance() { return balance; }
+};
+
+class SavingsAccount : public Account {
+protected:
+    double interestRate;
+public:
+    SavingsAccount(int no, double b, double r)
+        : Account(no, b), interestRate(r) {}
+
+    virtual void addInterest() {
+        balance += balance * interestRate;
+    }
+};
+
+class VIPSavings : public SavingsAccount {
+public:
+    VIPSavings(int no, double b, double r)
+        : SavingsAccount(no, b, r) {}
+
+    void addInterest() override {
+        balance += balance * (interestRate * 2);
+    }
+};
+
+int main() {
+    SavingsAccount s(1, 1000, 0.05);
+    VIPSavings v(2, 1000, 0.05);
+
+    for (int i = 0; i < 3; i++) {
+        s.addInterest();
+        v.addInterest();
+    }
+
+    cout << "Savings balance: " << s.getBalance() << endl;
+    cout << "VIP balance: " << v.getBalance() << endl;
+}
+*/
+//bai 9
+/*
+#include <iostream>
+using namespace std;
+
+class Security final {
+    string encryptionKey;
+public:
+    Security(string key) : encryptionKey(key) {}
+
+    string encrypt(string data) {
+        return data + "_encrypted";
+    }
+};
+
+// Lỗi nếu mở:
+// class SuperSecurity : public Security {}; 
+
+class Base {
+public:
+    virtual void process() final {
+        cout << "Processing..." << endl;
+    }
+};
+
+class Derived : public Base {
+    // Lỗi nếu override:
+    // void process() override {}
+};
+
+int main() {
+    Security s("123");
+    cout << s.encrypt("hello") << endl;
+}
+*/
+// bài 10 
+/*
+#include <iostream>
+using namespace std;
+
+class Wallet {
+private:
+    double money;
+public:
+    Wallet(double m) : money(m) {}
+
+    friend void inspect(const Wallet& w);
+
+    friend class Auditor;
+};
+
+void inspect(const Wallet& w) {
+    cout << "Inspect money: " << w.money << endl;
+}
+
+class Auditor {
+public:
+    void audit(const Wallet& w) {
+        cout << "Audit money: " << w.money << endl;
+    }
+};
+
+int main() {
+    Wallet w(500);
+
+    inspect(w);
+
+    Auditor a;
+    a.audit(w);
+}
+
+// bai 11
+#include <iostream>
+using namespace std;
+
+class Account {
+private:
+    double balance;
+
+protected:
+    double getBalance() { return balance; }
+
+    void setBalance(double b) {
+        if (b >= 0)
+            balance = b;
+    }
+
+public:
+    Account(double b = 0) : balance(b) {}
+
+    void deposit(double amount) {
+        if (amount > 0)
+            balance += amount;
+    }
+
+    void displayBalance() {
+        cout << "Balance: " << balance << endl;
+    }
+};
+
+class PremiumAccount : public Account {
+public:
+    PremiumAccount(double b) : Account(b) {}
+
+    void increaseBonus() {
+        double b = getBalance();
+        setBalance(b + 100); 
+    }
+};
+
+int main() {
+    PremiumAccount p(500);
+    p.increaseBonus();
+    p.displayBalance();
+}
+*/
+// BAI 12
+/*
+#include <iostream>
+using namespace std;
+
+class Artist {
+public:
+    int creativity;
+
+    Artist(int c) : creativity(c) {}
+
+    void draw() {
+        cout << "Drawing with creativity: " << creativity << endl;
+    }
+
+    void work() {
+        cout << "Artist is working..." << endl;
+    }
+};
+
+class Coder {
+public:
+    int logic;
+
+    Coder(int l) : logic(l) {}
+
+    void code() {
+        cout << "Coding with logic: " << logic << endl;
+    }
+
+    void work() {
+        cout << "Coder is working..." << endl;
+    }
+};
+
+class GameDev : public Artist, public Coder {
+public:
+    GameDev(int c, int l) : Artist(c), Coder(l) {}
+
+    void develop() {
+        draw();
+        code();
+        cout << "Developing game..." << endl;
+    }
+};
+
+int main() {
+    GameDev dev(80, 90);
+
+    dev.draw();
+    dev.code();
+    dev.develop();
+}
+*/
+// BAI13
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    string name;
+};
+
+class Mammal : public Animal {};
+class WingedAnimal : public Animal {};
+
+class Bat : public Mammal, public WingedAnimal {};
+
+int main() {
+    Bat b;
+    b.name = "Batman"; // LỖI
+
+    return 0;
+}
