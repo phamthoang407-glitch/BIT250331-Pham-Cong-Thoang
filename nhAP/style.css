@@ -1,0 +1,1503 @@
+/* =====================================================
+   CYBER QUIZ 4.0
+   style.css
+   PHẦN 1
+====================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#07121f;
+    color:#ffffff;
+    overflow-x:hidden;
+}
+
+/* Thanh cuộn */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#081624;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00c8ff;
+    border-radius:20px;
+}
+
+/* Link */
+
+a{
+    text-decoration:none;
+    color:white;
+}
+
+ul{
+    list-style:none;
+}
+
+/* ================= HEADER ================= */
+
+header{
+
+    width:100%;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    z-index:999;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 80px;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.logo{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#00d9ff;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+nav ul li a{
+
+    font-size:16px;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+nav ul li a:hover{
+
+    color:#00d9ff;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:150px 80px 80px;
+
+    gap:60px;
+
+}
+
+.hero-left{
+
+    flex:1;
+
+}
+
+.hero-left h1{
+
+    font-size:58px;
+
+    line-height:75px;
+
+    margin-bottom:25px;
+
+}
+
+.hero-left h1 span{
+
+    color:#00d9ff;
+
+}
+
+.hero-left p{
+
+    font-size:19px;
+
+    line-height:34px;
+
+    color:#c9d7e3;
+
+    margin-bottom:40px;
+
+}
+
+.hero-button{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.hero-button button{
+
+    padding:16px 35px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.hero-button button:first-child{
+
+    background:#00d9ff;
+
+    color:#07121f;
+
+}
+
+.hero-button button:last-child{
+
+    background:transparent;
+
+    border:2px solid #00d9ff;
+
+    color:white;
+
+}
+
+.hero-button button:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 0 20px #00d9ff;
+
+}
+
+/* ================= HERO ICON ================= */
+
+.hero-right{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.shield{
+
+    width:280px;
+
+    height:280px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:150px;
+
+    background:rgba(0,217,255,.08);
+
+    border:2px solid rgba(0,217,255,.25);
+
+    animation:float 3s ease-in-out infinite;
+
+    box-shadow:
+
+    0 0 40px rgba(0,217,255,.35),
+
+    inset 0 0 40px rgba(0,217,255,.15);
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-20px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ================= CHỦ ĐỀ ================= */
+
+.topics{
+
+    padding:90px 80px;
+
+}
+
+.topics h2{
+
+    text-align:center;
+
+    font-size:40px;
+
+    margin-bottom:50px;
+
+}
+
+.topic-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:#0d1f32;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.05);
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#00d9ff;
+
+    box-shadow:0 0 30px rgba(0,217,255,.35);
+
+}
+
+.card .icon{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    margin-bottom:15px;
+
+    color:#00d9ff;
+
+}
+
+.card p{
+
+    color:#b6c4d0;
+
+    line-height:28px;
+
+}
+/* ================= THỐNG KÊ ================= */
+
+.stats{
+
+    padding:80px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.box{
+
+    background:#0d1f32;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.box::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+
+    left:-50%;
+
+    width:200%;
+
+    height:200%;
+
+    background:linear-gradient(
+        45deg,
+        transparent,
+        rgba(0,217,255,.18),
+        transparent
+    );
+
+    transform:rotate(30deg);
+
+    transition:.6s;
+
+}
+
+.box:hover::before{
+
+    transform:rotate(30deg) translateX(60%);
+
+}
+
+.box:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#00d9ff;
+
+    box-shadow:0 0 35px rgba(0,217,255,.35);
+
+}
+
+.box h2{
+
+    font-size:45px;
+
+    color:#00d9ff;
+
+    margin-bottom:15px;
+
+}
+
+.box p{
+
+    color:#b8c5d3;
+
+    font-size:18px;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    background:#06111d;
+
+    padding:60px 30px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+footer h3{
+
+    color:#00d9ff;
+
+    font-size:30px;
+
+    margin-bottom:15px;
+
+}
+
+footer p{
+
+    color:#9fb3c8;
+
+    margin:10px 0;
+
+    line-height:28px;
+
+}
+
+/* ================= HIỆU ỨNG PHÁT SÁNG ================= */
+
+.glow{
+
+    color:#00d9ff;
+
+    text-shadow:
+
+    0 0 5px #00d9ff,
+
+    0 0 10px #00d9ff,
+
+    0 0 20px #00d9ff,
+
+    0 0 40px #00d9ff;
+
+}
+
+.neon-border{
+
+    border:2px solid #00d9ff;
+
+    box-shadow:
+
+    0 0 10px #00d9ff,
+
+    0 0 20px rgba(0,217,255,.4);
+
+}
+
+/* ================= HIỆU ỨNG HOVER CHUNG ================= */
+
+button{
+
+    transition:.35s;
+
+}
+
+button:hover{
+
+    cursor:pointer;
+
+}
+
+.card,
+.box,
+button,
+nav a{
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px) scale(1.03);
+
+}
+
+.box:hover{
+
+    transform:translateY(-8px) scale(1.02);
+
+}
+
+.logo{
+
+    transition:.35s;
+
+}
+
+.logo:hover{
+
+    text-shadow:
+
+    0 0 10px #00d9ff,
+
+    0 0 30px #00d9ff;
+
+}
+
+nav a{
+
+    position:relative;
+
+}
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:#00d9ff;
+
+    transition:.35s;
+
+}
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+/* ================= RESPONSIVE TABLET ================= */
+
+@media(max-width:992px){
+
+header{
+
+    padding:20px 30px;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.hero{
+
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:150px 30px 60px;
+
+}
+
+.hero-left h1{
+
+    font-size:42px;
+
+    line-height:60px;
+
+}
+
+.hero-button{
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-right{
+
+    margin-top:40px;
+
+}
+
+.shield{
+
+    width:220px;
+
+    height:220px;
+
+    font-size:110px;
+
+}
+
+.topic-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.stats{
+
+    grid-template-columns:repeat(2,1fr);
+
+    padding:60px 30px;
+
+}
+
+.topics{
+
+    padding:70px 30px;
+
+}
+
+}
+
+/* ================= KẾT THÚC PHẦN 2 ================= */
+/* =====================================================
+   RESPONSIVE MOBILE
+====================================================== */
+
+@media (max-width:768px){
+
+header{
+
+    padding:15px 20px;
+
+}
+
+.logo{
+
+    font-size:24px;
+
+}
+
+nav ul{
+
+    flex-direction:column;
+
+    gap:15px;
+
+    text-align:center;
+
+}
+
+.hero{
+
+    padding:150px 20px 60px;
+
+}
+
+.hero-left h1{
+
+    font-size:34px;
+
+    line-height:48px;
+
+}
+
+.hero-left p{
+
+    font-size:16px;
+
+    line-height:30px;
+
+}
+
+.hero-button{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.hero-button button{
+
+    width:220px;
+
+}
+
+.shield{
+
+    width:180px;
+
+    height:180px;
+
+    font-size:90px;
+
+}
+
+.topic-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.stats{
+
+    grid-template-columns:1fr;
+
+}
+
+.box{
+
+    padding:30px;
+
+}
+
+.topics h2{
+
+    font-size:32px;
+
+}
+
+}
+
+/* =====================================================
+   HIỆU ỨNG XUẤT HIỆN
+====================================================== */
+
+.fade-up{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:1s;
+
+}
+
+.fade-up.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* =====================================================
+   CYBER BACKGROUND
+====================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    animation:gridMove 18s linear infinite;
+
+}
+
+@keyframes gridMove{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(40px);
+
+    }
+
+}
+
+/* =====================================================
+   HIỆU ỨNG SAO
+====================================================== */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+
+    radial-gradient(circle,#00d9ff 1px,transparent 1px);
+
+    background-size:130px 130px;
+
+    opacity:.15;
+
+}
+
+/* =====================================================
+   BACK TO TOP
+====================================================== */
+
+#topBtn{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#00d9ff;
+
+    color:#07121f;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    display:none;
+
+    z-index:999;
+
+    box-shadow:0 0 20px rgba(0,217,255,.4);
+
+    transition:.3s;
+
+}
+
+#topBtn:hover{
+
+    transform:scale(1.15);
+
+}
+
+/* =====================================================
+   LOADING
+====================================================== */
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#07121f;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.loader span{
+
+    width:70px;
+
+    height:70px;
+
+    border:7px solid rgba(255,255,255,.1);
+
+    border-top:7px solid #00d9ff;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* =====================================================
+   TEXT SELECTION
+====================================================== */
+
+::selection{
+
+    background:#00d9ff;
+
+    color:#07121f;
+
+}
+
+/* =====================================================
+   ẨN THANH SCROLL NGANG
+====================================================== */
+
+body{
+
+    overflow-x:hidden;
+
+}
+
+/* =====================================================
+   KẾT THÚC PHẦN 3
+====================================================== */
+/* =====================================================
+   GLASS CARD
+====================================================== */
+
+.glass{
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+}
+
+/* =====================================================
+   CYBER BUTTON
+====================================================== */
+
+.cyber-btn{
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#00d9ff,#0078ff);
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+.cyber-btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 0 20px #00d9ff,
+        0 0 40px rgba(0,217,255,.5);
+
+}
+
+/* =====================================================
+   DASHBOARD CARD
+====================================================== */
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+    padding:80px;
+
+}
+
+.dashboard-card{
+
+    background:#0d1f32;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 0 30px rgba(0,217,255,.35);
+
+}
+
+.dashboard-card h3{
+
+    color:#00d9ff;
+
+    margin-bottom:15px;
+
+}
+
+.dashboard-card p{
+
+    color:#c5d0db;
+
+}
+
+/* =====================================================
+   QUIZ CARD
+====================================================== */
+
+.quiz-card{
+
+    width:900px;
+
+    max-width:95%;
+
+    margin:80px auto;
+
+    background:#0d1f32;
+
+    border-radius:25px;
+
+    padding:40px;
+
+    box-shadow:0 0 30px rgba(0,217,255,.15);
+
+}
+
+.quiz-question{
+
+    font-size:28px;
+
+    margin-bottom:30px;
+
+    line-height:45px;
+
+}
+
+.answers{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.answer{
+
+    padding:18px 25px;
+
+    background:#10263c;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    border:2px solid transparent;
+
+}
+
+.answer:hover{
+
+    border-color:#00d9ff;
+
+    background:#15314d;
+
+}
+
+.answer.correct{
+
+    background:#00b35a;
+
+}
+
+.answer.wrong{
+
+    background:#d63031;
+
+}
+
+/* =====================================================
+   PROGRESS BAR
+====================================================== */
+
+.progress{
+
+    width:100%;
+
+    height:15px;
+
+    background:#13293f;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:25px 0;
+
+}
+
+.progress-value{
+
+    height:100%;
+
+    width:0%;
+
+    background:linear-gradient(to right,#00d9ff,#0078ff);
+
+    transition:.5s;
+
+}
+
+/* =====================================================
+   LEVEL BAR
+====================================================== */
+
+.level{
+
+    width:100%;
+
+    background:#13293f;
+
+    height:18px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.level-fill{
+
+    width:20%;
+
+    height:100%;
+
+    background:#00d9ff;
+
+}
+
+/* =====================================================
+   ACHIEVEMENT
+====================================================== */
+
+.badges{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    padding:80px;
+
+}
+
+.badge{
+
+    background:#0d1f32;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.badge:hover{
+
+    transform:scale(1.05);
+
+}
+
+.badge i{
+
+    font-size:55px;
+
+    color:#FFD700;
+
+    margin-bottom:20px;
+
+}
+
+/* =====================================================
+   CHATBOT
+====================================================== */
+
+.chat-box{
+
+    width:400px;
+
+    max-width:95%;
+
+    height:550px;
+
+    background:#0d1f32;
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    border-radius:20px;
+
+    display:none;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    box-shadow:0 0 30px rgba(0,217,255,.3);
+
+}
+
+.chat-header{
+
+    background:#00d9ff;
+
+    color:#07121f;
+
+    padding:20px;
+
+    font-weight:bold;
+
+}
+
+.chat-body{
+
+    flex:1;
+
+    padding:20px;
+
+    overflow-y:auto;
+
+}
+
+.chat-input{
+
+    display:flex;
+
+}
+
+.chat-input input{
+
+    flex:1;
+
+    border:none;
+
+    padding:15px;
+
+    outline:none;
+
+}
+
+.chat-input button{
+
+    width:70px;
+
+    border:none;
+
+    background:#00d9ff;
+
+}
+
+/* =====================================================
+   FOOTER HOVER
+====================================================== */
+
+footer h3:hover{
+
+    color:#ffffff;
+
+    transition:.3s;
+
+}
+
+/* =====================================================
+   SHADOW
+====================================================== */
+
+.shadow{
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.35);
+
+}
+
+/* =====================================================
+   CARD ANIMATION
+====================================================== */
+
+@keyframes zoomCard{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.card{
+
+    animation:zoomCard .8s;
+
+}
+
+/* =====================================================
+   RESPONSIVE 1200px
+====================================================== */
+
+@media(max-width:1200px){
+
+.dashboard{
+
+    padding:40px;
+
+}
+
+.badges{
+
+    padding:40px;
+
+}
+
+}
+
+/* =====================================================
+   RESPONSIVE 576px
+====================================================== */
+
+@media(max-width:576px){
+
+.hero-left h1{
+
+    font-size:28px;
+
+    line-height:40px;
+
+}
+
+.hero-left p{
+
+    font-size:15px;
+
+}
+
+.logo{
+
+    font-size:20px;
+
+}
+
+.quiz-card{
+
+    padding:25px;
+
+}
+
+.quiz-question{
+
+    font-size:22px;
+
+    line-height:35px;
+
+}
+
+.chat-box{
+
+    width:95%;
+
+    right:10px;
+
+    bottom:10px;
+
+}
+
+.dashboard{
+
+    padding:20px;
+
+}
+
+.badges{
+
+    padding:20px;
+
+}
+
+}
+
+/* =====================================================
+   END OF FILE
+====================================================== */
+.answer.disabled{
+
+    opacity:.85;
+
+    cursor:default;
+
+}
